@@ -1,3 +1,4 @@
+import { Product } from "@/sanity.types";
 import React from "react";
 
 interface productsViewProps {

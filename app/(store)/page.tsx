@@ -1,5 +1,4 @@
 import ProductsView from "@/components/ProductsView";
-import { Button } from "@/components/ui/button";
 import { getAllProducts } from "@/sanity/lib/products/getAllProducts";
 
 export default async function Home() {
