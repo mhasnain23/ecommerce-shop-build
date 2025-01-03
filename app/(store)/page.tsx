@@ -6,7 +6,9 @@ export default async function Home() {
 
   return (
     <div>
-      <ProductsView products={products} />
+      <div className="flex flex-col items-center justify-top min-h-screen bg-gray-100">
+        <ProductsView products={products} />
+      </div>
     </div>
   );
 }
