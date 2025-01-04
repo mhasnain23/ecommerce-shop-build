@@ -21,6 +21,8 @@ const ProductThumb = ({ product }: { product: Product }) => {
             src={imageUrl(product.image).url()}
             alt={product.name || "Product Image"}
             fill
+            quality={100}
+            priority
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         )}

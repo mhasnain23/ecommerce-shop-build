@@ -1,3 +1,4 @@
+import { searchProductsByName } from "@/sanity/lib/products/searchProductsByName";
 import React from "react";
 
 const SearchPage = async ({
@@ -8,7 +9,7 @@ const SearchPage = async ({
   };
 }) => {
   const { query } = await searchParams;
-  console.log(query);
+  const products = await searchProductsByName(query);
 
   return <div>SearchPage for {query}</div>;
 };
