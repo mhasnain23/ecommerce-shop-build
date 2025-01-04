@@ -10,7 +10,7 @@ const ProductThumb = ({ product }: { product: Product }) => {
     (product?.stock ?? 0) !== null && (product?.stock ?? 0) <= 0;
   return (
     <Link
-      href={`/products/${product?.slug?.current}`}
+      href={`/product/${product?.slug?.current}`}
       className={`group flex flex-col rounded-lg bg-white border border-gray-200 shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden ${
         isOutOfStock ? "opacity-50" : ""
       }`}
