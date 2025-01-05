@@ -39,7 +39,7 @@ export const CategorySelectorComponent = ({
         <Button
           variant="outline"
           aria-expanded={open}
-          className="w-full max-w-full relative flex justify-center sm:justify-start flex-none items-center space-x-2 bg-blue-500 hover:bg-blue-700 hover:text-white text-white font-bold py-2 px-4 rounded"
+          className="w-full max-w-full relative flex justify-center sm:justify-start flex-none items-center space-x-2 bg-blue-500 hover:bg-blue-700 hover:text-white text-white font-bold py-2 px-4 rounded m-5"
         >
           {value
             ? categories.find((category) => category._id === value)?.title
