@@ -39,6 +39,7 @@ const useBasketStore = create<BasketState>()(
                     }
                 }
             }),
+
             removeItem: (productId) => set((state) => ({
                 items: state.items.reduce((acc, item) => {
                     if (item.product._id === productId._id) {
