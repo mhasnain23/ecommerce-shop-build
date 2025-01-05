@@ -39,7 +39,7 @@ export const CategorySelectorComponent = ({
         <Button
           variant="outline"
           aria-expanded={open}
-          className="w-full max-w-full relative flex justify-center sm:justify-start flex-none items-center space-x-2 bg-blue-500 hover:bg-blue-700 hover:text-white text-white font-bold py-2 px-4 rounded m-5"
+          className="w-full max-w-full relative flex justify-center sm:justify-start flex-none items-center space-x-2 bg-blue-500 hover:bg-blue-700 hover:text-white text-white font-bold py-2 px-14 rounded-lg my-5"
         >
           {value
             ? categories.find((category) => category._id === value)?.title
@@ -78,7 +78,7 @@ export const CategorySelectorComponent = ({
                   value={category.title}
                   onSelect={() => {
                     setValue(value === category._id ? "" : category._id);
-                    router.push(`categories/${category.slug?.current}`);
+                    router.push(`/categories/${category.slug?.current}`);
                     setOpen(false);
                   }}
                 >
