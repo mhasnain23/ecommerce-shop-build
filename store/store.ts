@@ -12,15 +12,15 @@ interface BasketItem {
 interface BasketState {
     items: BasketItem[];
     addItem: (product: Product) => void;
-    removeItem: (productId: Product) => void;
+    removeItem: (productId: string) => void;
     clearBasket: () => void;
     getTotalPrice: () => number;
-    getItemCount: (productId: Product) => number;
+    getItemCount: (productId: string) => number;
     getGroupedItems: () => BasketItem[];
 }
 
 // Create the basket store
-const useBasketStore = create<BasketState>()(
+export const useBasketStore = create<BasketState>()(
     persist(
         (set, get) => ({
             // Initialize the basket with an empty array
@@ -50,7 +50,7 @@ const useBasketStore = create<BasketState>()(
             removeItem: (productId) => set((state) => ({
                 items: state.items.reduce((acc, item) => {
                     // If the item exists in the basket and has a quantity greater than 1, decrement its quantity
-                    if (item.product._id === productId._id) {
+                    if (item.product._id === productId) {
                         if (item.quantity > 1) {
                             acc.push({ ...item, quantity: item.quantity - 1 })
                         }
@@ -72,7 +72,7 @@ const useBasketStore = create<BasketState>()(
             // Get the quantity of a specific item in the basket
             getItemCount: (productId) => {
                 // Find the item in the basket and return its quantity
-                const item = get().items.find((item) => item.product._id === productId._id);
+                const item = get().items.find((item) => item.product._id === productId);
                 return item ? item.quantity : 0;
             },
             // Get the items in the basket grouped by product

@@ -1,3 +1,4 @@
+import AddToBasketButon from "@/components/AddToBasketButon";
 import { imageUrl } from "@/lib/imageUrl";
 import { getProductBySlug } from "@/sanity/lib/products/getProductBySlug";
 import { PortableText } from "next-sanity";
@@ -45,7 +46,7 @@ const ProductPage = async ({
         </div>
 
         {/* This is the product details section */}
-        <div className="flex flex-col justify-between">
+        <div className="flex flex-col justify-around">
           <div>
             <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
             <div className="text-xl font-semibold mb-4">
@@ -56,6 +57,9 @@ const ProductPage = async ({
                 <PortableText value={product.description} />
               )}
             </div>
+          </div>
+          <div className="mt-6">
+            <AddToBasketButon product={product} disabled={isOutOfStock} />
           </div>
         </div>
       </div>
