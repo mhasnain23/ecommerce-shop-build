@@ -3,7 +3,7 @@ import { create } from "zustand"
 import { persist } from "zustand/middleware"
 
 // Basket item is a product with its quantity
-interface BasketItem {
+export interface BasketItem {
     product: Product;
     quantity: number;
 }
