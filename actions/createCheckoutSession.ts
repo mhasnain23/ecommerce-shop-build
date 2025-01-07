@@ -20,7 +20,7 @@ export async function createCheckoutSession(items: GroupedBasketItem[], metadata
     try {
         // Check if all items have a price
         const itemWithoutPrice = items.map((item) => item.product.price)
-        if (itemWithoutPrice.length > 0) {
+        if (itemWithoutPrice.length <= 0) {
             throw new Error("Some items is not have a price");
         }
 
@@ -46,7 +46,7 @@ export async function createCheckoutSession(items: GroupedBasketItem[], metadata
             cancel_url: `${`https://${process.env.VERCEL_URL}` || process.env.NEXT_PUBLIC_BASE_URL}/basket`,
             line_items: items.map((item) => ({
                 price_data: {
-                    currency: "usa",
+                    currency: "usd",
                     unit_amount: Math.round(item.product.price! * 100),
                     product_data: {
                         name: item.product.name || "Unnamed Product",
