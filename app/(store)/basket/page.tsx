@@ -22,7 +22,7 @@ const BasketPage = () => {
   const [isClient, setIsClient] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  // wait
+  // wait to render on the client
   useEffect(() => {
     setIsClient(true);
   }, []);
@@ -43,15 +43,18 @@ const BasketPage = () => {
   const handleCheckout = async () => {
     if (!isSignedIn) return;
     setIsLoading(true);
+
     try {
       const metadata: Metadata = {
         orderNumber: crypto.randomUUID(), // generate a random uuid()
         customerName: user?.fullName ?? "Unknown",
         customerEmail: user?.primaryEmailAddress?.emailAddress ?? "Unknown",
-        clerkUserId: user?.id,
+        clerkUserId: user?.id ?? "Unknown",
       };
 
       const checkoutUrl = await createCheckoutSession(groupedItems, metadata);
+
+      console.log("Stripe Secret Key:", process.env.STRIPE_SECRET_KEY);
 
       if (checkoutUrl) {
         window.location.href = checkoutUrl;
