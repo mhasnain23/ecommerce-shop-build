@@ -35,6 +35,15 @@ export async function createCheckoutSession(items: GroupedBasketItem[], metadata
             customerId = customers.data[0].id;
         }
 
+        const baseUrl = process.env.NODE_ENV === 'production'
+            ? `https://${process.env.VERCEL_URL}`
+            : process.env.NEXT_PUBLIC_BASE_URL;
+
+        const successUrl = `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}&orderNumber=${metadata.orderNumber}`;
+        const cancelUrl = `${baseUrl}/basket`;
+        console.log(successUrl);
+        console.log(cancelUrl);
+
         const session = await stripe.checkout.sessions.create({
             customer: customerId,
             customer_creation: customerId ? undefined : "always",
@@ -42,8 +51,8 @@ export async function createCheckoutSession(items: GroupedBasketItem[], metadata
             metadata,
             mode: "payment",
             allow_promotion_codes: true,
-            success_url: `${`https://${process.env.VERCEL_URL}` || process.env.NEXT_PUBLIC_BASE_URL}/success?session_id={CHECKOUT_SESSION_ID}&orderNumber=${metadata.orderNumber}`,
-            cancel_url: `${`https://${process.env.VERCEL_URL}` || process.env.NEXT_PUBLIC_BASE_URL}/basket`,
+            success_url: successUrl,
+            cancel_url: cancelUrl,
             line_items: items.map((item) => ({
                 price_data: {
                     currency: "usd",
