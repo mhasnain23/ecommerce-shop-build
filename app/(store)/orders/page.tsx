@@ -27,7 +27,7 @@ const OrderPage = async () => {
           </div>
         ) : (
           <div className="space-y-6 sm:space-y-8">
-            {orders.map((order: any) => (
+            {orders.map((order) => (
               <div
                 className="bg-white border border-gray-200 shadow-lg rounded-sm overflow-hidden"
                 key={order.orderNumber}
@@ -96,7 +96,7 @@ const OrderPage = async () => {
                   </p>
 
                   <div className="space-y-3 sm:space-y-4">
-                    {order.products?.map((product: any) => (
+                    {order.products?.map((product) => (
                       <div
                         className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-2 gap-3 border-b last:border-b-0"
                         key={product.product?._id}

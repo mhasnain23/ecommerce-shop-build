@@ -9,7 +9,7 @@ import React, { useEffect } from "react";
 const SuccessPage = () => {
   const searchParams = useSearchParams();
   const orderNumber = searchParams.get("orderNumber");
-  const discount = searchParams.get("discount");
+  // const discount = searchParams.get("discount");
   const clearBasket = useBasketStore((state) => state.clearBasket);
 
   useEffect(() => {
