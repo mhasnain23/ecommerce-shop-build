@@ -5,7 +5,7 @@ export const productType = defineType({
     name: 'product',
     title: 'Products',
     type: 'document',
-    icon: TrolleyIcon,
+    icon: TrolleyIcon as any,
     fields: [
         defineField({
             name: 'name',

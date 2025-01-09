@@ -7,7 +7,7 @@ export const salesType = defineType({
     name: 'sale',
     title: 'Sale',
     type: 'document',
-    icon: TagIcon,
+    icon: TagIcon as any,
     fields: [
         defineField({
             name: 'title',
