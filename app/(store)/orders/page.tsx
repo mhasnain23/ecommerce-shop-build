@@ -44,7 +44,7 @@ const OrderPage = async () => {
                     </div>
                     <div className="sm:text-right">
                       <p className="text-sm text-gray-600 mb-1">Order Date</p>
-                      <p className="font-medium">
+                      <p className="font-medium text-black/70">
                         {order.orderDate
                           ? new Date(order.orderDate).toLocaleDateString()
                           : "N/A"}
@@ -66,7 +66,7 @@ const OrderPage = async () => {
                       {order.status}
                     </span>
                   </div>
-                  <div className="sm:text-right">
+                  <div className="sm:text-right mt-4">
                     <p className="text-sm text-gray-600 mb-1">Total Amount</p>
                     <p className="font-bold text-lg">
                       {formatCurrency(order.totalPrice ?? 0, order.currency)}
