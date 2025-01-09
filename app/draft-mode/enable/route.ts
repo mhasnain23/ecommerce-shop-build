@@ -13,10 +13,10 @@ export async function GET(request: NextRequest) {
     );
 
     if (!isValid) {
-        return new Response("Invalid Secret", { status: 400 })
+        return new Response("Invalid Secret", { status: 400 });
     }
 
-    (await draftMode()).enable(),
+    await (await draftMode()).enable();
 
-        redirect(redirectTo)
+    return redirect(redirectTo);
 }
