@@ -138,12 +138,12 @@ export const orderType = defineType({
             orderId: 'orderNumber',
             email: "email",
         },
-        prepare(select: any) {
+        prepare(select) {
             const orderIdSnippet = `${select.orderId.slice(0, 5)}...${select.orderId.slice(-5)}`;
             return {
                 title: `${select.orderId} ${orderIdSnippet}`,
                 subtitle: `${select.name} ${select.currency}, ${select.email}`,
-                media: BasketIcon,
+                media: BasketIcon as any,
             }
         }
     }
